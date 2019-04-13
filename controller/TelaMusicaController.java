@@ -7,6 +7,7 @@ package dodoy.controller;
 
 import dodoy.main.TelaMenuMain;
 import dodoy.main.TelaMusicaMain;
+import dodoy.thread.ThreadMusic;
 import java.applet.Applet;
 import java.applet.AudioClip;
 import java.io.FileInputStream;
@@ -28,41 +29,50 @@ import javazoom.jl.player.Player;
  * @author jvnpitt
  */
 public class TelaMusicaController implements Initializable {
-    
+
     @FXML
     private Button btPlay;
-    
+
     @FXML
     private Button btStop;
-    
+
     @FXML
     private Button btBack;
-    
+
+    private ThreadMusic thread;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       URL url2 = getClass().getResource("musica.wav");
-        AudioClip audio = Applet.newAudioClip(url2);
-        
-        btPlay.setOnMouseClicked(event ->{
-            audio.play();
+        btPlay.setOnMouseClicked(event -> {
+            try {
+                this.thread = new ThreadMusic();
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(TelaMusicaController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (JavaLayerException ex) {
+                Logger.getLogger(TelaMusicaController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
-        
-        btStop.setOnMouseClicked(event ->{
-            audio.stop();
+
+        btStop.setOnMouseClicked(event -> {
+            try {
+                thread.wait();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(TelaMusicaController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
-        
-        btBack.setOnMouseClicked(event ->{
-           TelaMenuMain tela = new TelaMenuMain();
-           try {
-               tela.start(new Stage());
-           } catch (Exception ex) {
-               Logger.getLogger(TelaMusicaController.class.getName()).log(Level.SEVERE, null, ex);
-           }
-           fechar();
-        }); 
-    } 
-    
-    private void fechar(){
+
+        btBack.setOnMouseClicked(event -> {
+            TelaMenuMain tela = new TelaMenuMain();
+            try {
+                tela.start(new Stage());
+            } catch (Exception ex) {
+                Logger.getLogger(TelaMusicaController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            fechar();
+        });
+    }
+
+    private void fechar() {
         TelaMusicaMain.getStage().close();
     }
 }
