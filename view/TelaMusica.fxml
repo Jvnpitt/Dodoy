@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="404.0" prefWidth="247.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dodoy.controller.TelaMusicaController">
+   <children>
+      <ImageView fitHeight="404.0" fitWidth="247.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@TelaMusica.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="btPlay" layoutX="83.0" layoutY="71.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="82.0" text="Play" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Button>
+      <Button fx:id="btStop" layoutX="83.0" layoutY="161.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="82.0" text="Stop">
+         <font>
+            <Font name="FreeSans" size="21.0" />
+         </font>
+      </Button>
+      <Button fx:id="btBack" layoutX="82.0" layoutY="256.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="82.0" text="Voltar">
+         <font>
+            <Font name="FreeSans" size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
