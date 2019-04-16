@@ -5,6 +5,8 @@
  */
 package dodoy.controller;
 
+import dodoy.enuns.EnumThread;
+import dodoy.factory.FactoryThread;
 import dodoy.main.TelaMenuMain;
 import dodoy.main.TelaMusicaMain;
 import dodoy.thread.ThreadMusic;
@@ -39,18 +41,19 @@ public class TelaMusicaController implements Initializable {
     @FXML
     private Button btBack;
 
-    private ThreadMusic thread;
+    private Thread thread;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         btPlay.setOnMouseClicked(event -> {
             try {
-                this.thread = new ThreadMusic();
+                thread = FactoryThread.GETINSTANCE(EnumThread.Music);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(TelaMusicaController.class.getName()).log(Level.SEVERE, null, ex);
             } catch (JavaLayerException ex) {
                 Logger.getLogger(TelaMusicaController.class.getName()).log(Level.SEVERE, null, ex);
             }
+
         });
 
         btStop.setOnMouseClicked(event -> {

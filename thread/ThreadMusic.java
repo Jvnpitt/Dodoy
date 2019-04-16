@@ -17,16 +17,30 @@ import javazoom.jl.player.Player;
  * @author jvnpitt
  */
 public class ThreadMusic extends Thread {
-
+    
+    private static ThreadMusic instance;
     private FileInputStream in;
     private Player audio;
 
-    public ThreadMusic() throws FileNotFoundException, JavaLayerException {
+    private ThreadMusic() throws FileNotFoundException, JavaLayerException {
         in = new FileInputStream("musica/musica.mp3");
         audio = new Player(in);
         start();
     }
-
+    
+    /**
+     *
+     * @return
+     * @throws FileNotFoundException
+     * @throws JavaLayerException
+     */
+    public static ThreadMusic GETINSTANCE() throws FileNotFoundException, JavaLayerException{
+        if(instance == null){
+            instance = new ThreadMusic();
+        }
+        return instance;
+        
+    }    
     @Override
     public void run() {
         try {
