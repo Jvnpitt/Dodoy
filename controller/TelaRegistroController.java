@@ -62,7 +62,7 @@ public class TelaRegistroController implements Initializable {
         });
     }
 
-    private void exibe(int i, BancoController banco, Usuario user) {
+    private void exibe(int i, UsuarioController banco, Usuario user) {
         switch (i) {
             case 0:
                 label.setText(" Cadastrado com sucesso");
@@ -99,7 +99,7 @@ public class TelaRegistroController implements Initializable {
         String password = tstPassword.getText();
         Usuario user = new Usuario(login, password);
 
-        BancoController banco = new BancoController();
+        UsuarioController banco = new UsuarioController();
 
         int codigo = banco.Verifica(user);
         exibe(codigo, banco, user);

@@ -1,9 +1,3 @@
-
-/*
-* To change this license header, choose License Headers in Project Properties.
-* To change this template file, choose Tools | Templates
-* and open the template in the editor.
- */
 package dodoy.dao;
 
 import dodoy.arquivo.Arquivo;
@@ -20,6 +14,7 @@ import java.util.logging.Logger;
  * @author jvnpitt
  */
 public class DaoArquivo implements DaoInterface {
+
     private static DaoArquivo instance;
     private Arquivo arquivo;
 
@@ -56,6 +51,3 @@ public class DaoArquivo implements DaoInterface {
         }
     }
 }
-
-
-//~ Formatted by Jindent --- http://www.jindent.com

@@ -1,18 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dodoy.controller;
 
 import dodoy.enuns.EnumThread;
 import dodoy.factory.FactoryThread;
 import dodoy.main.TelaMenuMain;
 import dodoy.main.TelaMusicaMain;
-import dodoy.thread.ThreadMusic;
-import java.applet.Applet;
-import java.applet.AudioClip;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,11 +16,6 @@ import javafx.stage.Stage;
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.Player;
 
-/**
- * FXML Controller class
- *
- * @author jvnpitt
- */
 public class TelaMusicaController implements Initializable {
 
     @FXML
@@ -57,7 +43,16 @@ public class TelaMusicaController implements Initializable {
         });
 
         btStop.setOnMouseClicked(event -> {
-            this.thread.stop();
+            try {
+                this.thread = FactoryThread.GETINSTANCE(EnumThread.Music);
+                this.thread.wait();
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(TelaMusicaController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (JavaLayerException ex) {
+                Logger.getLogger(TelaMusicaController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(TelaMusicaController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
 
         btBack.setOnMouseClicked(event -> {

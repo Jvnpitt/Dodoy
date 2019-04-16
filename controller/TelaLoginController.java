@@ -74,7 +74,7 @@ public class TelaLoginController implements Initializable {
         String password = txtPassword.getText();
 
         Usuario usuario = new Usuario(login, password);
-        BancoController banco = new BancoController();
+        UsuarioController banco = new UsuarioController();
         banco.Salvar(usuario);
 
         try {
