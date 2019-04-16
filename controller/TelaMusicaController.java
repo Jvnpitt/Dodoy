@@ -54,11 +54,7 @@ public class TelaMusicaController implements Initializable {
         });
 
         btStop.setOnMouseClicked(event -> {
-            try {
-                thread.wait();
-            } catch (InterruptedException ex) {
-                Logger.getLogger(TelaMusicaController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            this.thread.stop();
         });
 
         btBack.setOnMouseClicked(event -> {

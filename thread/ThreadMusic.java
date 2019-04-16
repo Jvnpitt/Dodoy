@@ -26,9 +26,9 @@ public class ThreadMusic extends Thread {
         audio = new Player(in);
         start();
     }
-    
+
     @Override
-    public void run(){
+    public void run() {
         try {
             audio.play();
         } catch (JavaLayerException ex) {
