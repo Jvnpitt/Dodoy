@@ -16,7 +16,7 @@ import javazoom.jl.decoder.JavaLayerException;
  */
 public class FactoryThread {
     
-    public static Thread GETINSTANCE(EnumThread thread) throws FileNotFoundException, JavaLayerException{ 
+    public static Runnable GETINSTANCE(EnumThread thread) throws FileNotFoundException, JavaLayerException{ 
         switch(thread){
             case Music:
                 return ThreadMusic.GETINSTANCE();

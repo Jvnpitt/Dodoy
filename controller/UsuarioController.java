@@ -11,7 +11,11 @@ import dodoy.validacao.ValidaLogin;
  */
 public class UsuarioController {
 
-    private DaoInterface dao = DaoArquivo.GETINSTANCE(); //Bridgie
+    private DaoInterface  dao;
+    
+    public UsuarioController(){
+        dao = DaoArquivo.GETINSTANCE(); //Bridgie
+    }
 
     public void Salvar(Usuario usuario) {
         dao.Salvar(usuario);

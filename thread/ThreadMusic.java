@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.Player;
 
-public class ThreadMusic extends Thread {
+public class ThreadMusic implements Runnable {
 
     private static ThreadMusic instance;
     private FileInputStream in;
@@ -16,7 +16,7 @@ public class ThreadMusic extends Thread {
     private ThreadMusic() throws FileNotFoundException, JavaLayerException {
         in = new FileInputStream("musica/musica.mp3");
         audio = new Player(in);
-        start();
+        
     }
 
     public static ThreadMusic GETINSTANCE() throws FileNotFoundException, JavaLayerException {
